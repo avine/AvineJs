@@ -1,0 +1,136 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+
+	<title>Test</title>
+
+	<script src="avine-js.js"></script>
+
+</head>
+<body>
+	<script>
+
+/*
+		function F() {
+			this.f = 1;
+		}
+
+//		F.prototype = F;
+//		F.constructor = F;
+
+		function G() {
+			this.g = 2;
+		};
+//		G.prototype = {};
+//		G.prototype.constructor = G;
+
+		f = new F();
+		console.log('f.constructor', f.constructor);
+
+		console.log(f.constructor === F);
+		console.log(f);
+
+		G.prototype = f;
+		console.log('f.constructor', f.constructor);
+
+		//f.prototype = F;
+		f.constructor = F;
+
+
+		//G.prototype.constructor = G;
+		//g = new G();
+
+		console.log('>', f.constructor === F);
+		console.log(f);
+
+
+
+		//g = new G();
+		//f.constructor.prototype = F;
+*/
+
+
+
+
+		c = new $.Core();
+		c.tag = 'C';
+
+		d = new $.Core();
+		d.tag = 'D';
+
+		e = d.clone();
+		e.tag = 'E';
+
+		f = d.clone();
+		f.tag = 'F';
+
+		c.addListener(d, 'FOO', function (e){
+			console.log(e.core);
+		});
+
+//		d.triggerEvent('FOO');
+		e.triggerEvent('FOO');
+//		f.triggerEvent('FOO');
+
+//		c.onComplete(function() {
+//			console.log('c complete OUPS !');
+//		});
+//
+//		d.then(function () {
+//			var _this = this;
+//			setTimeout(function () {
+//				_this.done(1);
+//			}, 500);
+//		}).queue(function (r) {
+//			console.log('d', r === 1);
+//		}).onComplete(function() {
+//			console.log('d complete');
+//		});
+//
+//		setTimeout(function () {
+//
+//			e.then(function () {
+//				this.done(2);
+//			}).queue(function (r) {
+//				console.log('e', r === 2);
+//			}).onComplete(function() {
+//				console.log('e complete');
+//			});
+//
+//		}, 1);
+
+
+
+
+
+
+//		var base = new $.Core();
+//		base.root = 'base';
+//		base.bag = { value: 'base' };
+//
+//		Clone = base.clone();
+//
+//		clone = base.clone();
+//		clone.root = 'clone';
+//		//clone.bag = base.bag;
+//
+//		base.onComplete(function () {
+//			console.log('complete', this);
+//		});
+//
+//		base.addListener('baseEvent1', function (e) {
+//			console.log('>>> baseEvent 1 !!!', e.core === clone);
+//		});
+//		base.addListener('baseEvent2', function (e) {
+//			console.log('>>> baseEvent 2 !!!', e.core === clone);
+//		});
+//		clone.triggerEvent('baseEvent1');
+//		clone.triggerEvent('baseEvent2');
+//
+//		base.removeListener('baseEvent');
+
+	</script>
+</body>
+</html>

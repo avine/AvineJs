@@ -1,0 +1,162 @@
+
+.ut {
+	margin-bottom: 1.5em;
+	overflow: hidden;
+	box-shadow: 1px 1px 1px rgba(0,0,0, .1);
+	border-radius: 5px;
+	border: 1px solid #ccc;
+	background-color: #ddd;
+
+	position: absolute;
+	left: -9999px;
+
+	&.ut-show {
+		position: relative;
+		left: 0;
+	}
+}
+
+.ut-code,
+.ut-html,
+.ut-log {
+	position: relative;
+	overflow: hidden;
+
+	margin: 5px !important;
+	padding: .5em 1em !important;
+	border-radius: 5px !important;
+	border: 1px solid #bbb;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.1) inset;
+
+	font-size: 1em;
+	line-height: 1.3em !important;
+
+	&:after {
+		position: absolute;
+		right: 0;
+		top: 0;
+
+		padding: 0px 6px;
+		border-bottom-left-radius: 5px;
+		border: 1px solid #bbb;
+		border-width: 0 0 1px 1px;
+		background-color: #ccc;
+		color: #000;
+
+		text-shadow: 0 1px 0 rgba(255,255,255,.5);
+		font-size:  12px;
+		opacity: .5;
+		transition: opacity .25s ease;
+	}
+
+	&:hover:after {
+		opacity: 0;
+	}
+}
+
+.ut-code:after { content: "code"; }
+.ut-html:after { content: "html"; }
+.ut-log:after { content: "log"; }
+
+.ut-code {
+	max-height: 150px;
+	overflow: auto;
+	background-color: #eee;
+	cursor: row-resize;
+
+	&.ut-endless {
+		max-height: none;
+	}
+	> code {
+		font-size: 12px !important;
+		line-height: inherit !important;
+	}
+}
+
+.ut-html {
+	background-color: #fff;
+}
+
+.ut-run {
+	padding: .25em .5em;
+	border: 1px solid #ccc;
+	border-width: 1px 0;
+	background-color: #fff;
+	background-image: linear-gradient(rgba(0,0,0, 0) 0%, rgba(0,0,0, 0) 50%, rgba(0,0,0, .1) 100%);
+	color: #555;
+	text-align: center;
+	user-select: none;
+	cursor: pointer;
+	transition: background-color .25s ease, color .25s ease;
+
+	&:hover {
+		background-color: #555;
+		color: #fff;
+	}
+}
+
+.ut-log {
+	display: none;
+	background-color: #fcf8e3;
+	color: #333;
+
+	&.ut-show {
+		display: block;
+	}
+}
+
+.ut-run { position: relative; top: 1px; }
+.ut-log { margin-top: 6px !important; }
+
+/* toggle */
+
+.ut-toggle {
+	position: relative;
+	display: block;
+	font-family: FontAwesome;
+	font-size: 18px;
+	line-height: 23px;
+	text-align: center;
+	text-decoration: none;
+	//color: #999;
+	transition: font-size .2s ease .1s, color .2s ease .1s;
+
+	&:after {
+		content: "\f121";
+	}
+	&:hover {
+		font-size: 13px;
+		//color: #ccc;
+	}
+
+	&.ut-hide {
+		&:after {
+			content: "\f121";
+		}
+		&:hover {
+			font-size: 23px;
+			//color: #666;
+		}
+	}
+}
+
+/* trigger */
+
+.ut-trigger {
+	visibility: hidden; // enabled in Javascript
+	text-decoration: none;
+	//color: #999;
+
+	&:before {
+		margin-right: 5px;
+		font-family: FontAwesome;
+		content: "\f147";
+	}
+
+	&.ut-trigger-close {
+		&:before {
+			content: "\f196";
+		}
+	}
+
+}

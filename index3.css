@@ -1,0 +1,68 @@
+
+.logo { display: inline-block; position: relative; }
+.logo img { position: absolute; }
+.logo-a { z-index: 4; }
+.logo-v { z-index: 3; }
+.logo-i { z-index: 5; }
+.logo-n { z-index: 2; }
+.logo-e { z-index: 1; }
+
+.logo-32, .logo-32 img { height: 32px; line-height: 32px; }
+.logo-64, .logo-64 img { height: 64px; line-height: 64px; }
+.logo-128, .logo-128 img { height: 128px; line-height: 128px; }
+
+.logo-32 { width: 113px; }
+.logo-32 .logo-a { left: 0px; }
+.logo-32 .logo-v { left: 9px; }
+.logo-32 .logo-i { left: 17px; }
+.logo-32 .logo-n { left: 49px; }
+.logo-32 .logo-e { left: 81px; }
+
+.logo-64 { width: 211px; }
+.logo-64 .logo-a { left: 0px; }
+.logo-64 .logo-v { left: 15px; }
+.logo-64 .logo-i { left: 27px; }
+.logo-64 .logo-n { left: 87px; }
+.logo-64 .logo-e { left: 147px; }
+
+.logo-128 { width: 420px; }
+.logo-128 .logo-a { left: 0px; }
+.logo-128 .logo-v { left: 28px; }
+.logo-128 .logo-i { left: 52px; }
+.logo-128 .logo-n { left: 172px; }
+.logo-128 .logo-e { left: 292px; }
+
+body {
+	background: url(images/bg/ticks_@2X.png) repeat;
+	background-size: 200px 200px;
+}
+
+.hide {
+	display: none;
+}
+
+/*
+code {
+	padding: 1px 3px;
+	border-radius: 3px;
+	border: 1px solid #ddd;
+	background-color: #f3f3f3;
+	color: #666;
+	font-size: .9em;
+	font-family: AvineFontTitle, Consolas, Monaco, 'Andale Mono', monospace;
+}
+pre code {
+	padding: 0;
+	border-radius: 0;
+	border: none;
+	background-color: transparent;
+}
+*/
+h2 {
+	font-weight: bold;
+	font-family: Consolas, Monaco, 'Andale Mono', monospace;
+}
+h2 span {
+	font-weight: normal;
+	font-size: .85em;
+}

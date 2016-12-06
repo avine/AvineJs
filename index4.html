@@ -1,0 +1,360 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+
+	<title>AvineJS framework</title>
+
+	<meta name="Description" content="AvineJS est un framework Javascript élégant, dont la syntaxe simple et robuste, permet d'écrire rapidement du code Javascript puissant et performant." />
+	<meta name="Keywords" content="Javascript, framework, asynchronous, JS, DOM, Plugin" />
+
+	<link rel="shortcut icon" href="favicon.ico" />
+	<link rel="stylesheet" type="text/css" href="css/avine-css.css" />
+	<link rel="stylesheet" type="text/css" href="index2.css" />
+
+	<link rel="stylesheet" type="text/css" href="font-awesome/css/font-awesome.css" />
+
+	<script src="avine-js.js"></script>
+	<script src="easing.js"></script>
+	<script src="avine-css.js"></script>
+
+	<link rel="stylesheet" type="text/css" href="prism/prism.css" />
+	<script src="prism/prism.js"></script>
+</head>
+<body>
+
+	<!-- header -->
+	<div class="avn-area-fill avn-color-primary" id="header__">
+		<div class="avn-area-bound">
+
+<div class="avn-grid avn-grid-medium avn-grid-align-middle avn-align-center">
+	<div class="avn-grid-w-240px">
+
+		<a href="logo.html" class="logo logo-64 logo-script">
+			<img src="images/logo/A-128.png" alt="A" class="logo-a" />
+			<img src="images/logo/V-128.png" alt="V" class="logo-v" />
+			<img src="images/logo/I-128.png" alt="I" class="logo-i" />
+			<img src="images/logo/N-128.png" alt="N" class="logo-n" />
+			<img src="images/logo/E-128.png" alt="E" class="logo-e" />
+		</a>
+		<!--<noscript>
+			<style>.logo-script { display:none; }</style>
+			<a href="logo.html" class="logo logo-64"><img src="images/logo/logo-128.png" alt="Avine" id="logo" /></a>
+		</noscript>-->
+		<script>
+			$.dom.ready(function() {
+				$('.logo img').each(function() {
+					var $logo = $(this);
+					$logo.data('start-from', $logo.css('left'));
+				}).loop(1).delay(5000).animate({
+					left: '0px'
+				}, 1500, 'easeOutCubic').delay(5000).then(function () {
+					var anim = function (selector) {
+						var $l = $(selector);
+						return $l.animate({
+							left: $l.data('start-from')
+						}, 1500, 'easeOutCubic');
+					};
+					this.doneWhen(
+						anim('.logo-a'),
+						anim('.logo-v'),
+						anim('.logo-i'),
+						anim('.logo-n'),
+						anim('.logo-e')
+					);
+				});
+			}, true);
+		</script>
+
+	</div><div>
+
+		<div><h1 style="margin:0">AvineJS <small>- Javascript framework</small></h1></div>
+
+	</div>
+</div>
+
+		</div>
+	</div><!-- /header -->
+
+
+
+	<!-- menu -->
+	<div class="avn-area-fill avn-color-grey-lighter">
+		<div class="avn-area-bound avn-area-nopad">
+
+<div class="avn-grid-wrap avn-grid-border avn-grid-embedded avn-drop-down avn-color-grey-lighter">
+	<div class="avn-grid avn-grid-medium avn-drop avn-hover-wrap avn-drop-fixed-full avn-grid-width-auto">
+		<div>
+			<span>Item 1</span><div>
+				AvineJS est un framework Javascript élégant, dont la syntaxe simple et robuste, permet d'écrire rapidement du code Javascript puissant et performant.
+			</div>
+		</div><div>
+			<span>Item 2</span><div>
+				AvineJS est un framework Javascript élégant, dont la syntaxe simple et robuste, permet d'écrire rapidement du code Javascript puissant et performant.
+			</div>
+		</div><div>
+			<span>Item 3</span><div>
+				AvineJS est un framework Javascript élégant, dont la syntaxe simple et robuste, permet d'écrire rapidement du code Javascript puissant et performant.
+			</div>
+		</div><div>
+			<span>Item 4</span><div>
+				AvineJS est un framework Javascript élégant, dont la syntaxe simple et robuste, permet d'écrire rapidement du code Javascript puissant et performant.
+			</div>
+		</div>
+	</div>
+</div>
+
+		</div>
+	</div><!-- /menu -->
+
+
+
+<div class="avn-area-fill avn-color-grey-lightest">
+	<div class="avn-area-bound">
+
+
+
+<div class="avn-carousel-wrap">
+	<div class="avn-carousel">
+		<div>
+
+<h5 class="avn-align-center">Cliquez sur la balle pour voir AvineJS en action...</h5>
+
+<div class="online-demo" style="height:150px; position:relative; border:1px solid #ddd; background-color:#fafafa">
+
+	<!--<img src="resource/ball.png" id="ball" />-->
+	<div id="ball"></div>
+
+</div>
+
+<style>
+	#ball {
+		position: absolute;
+		left: 0;
+		bottom: 0;
+		width: 32px;
+		height: 32px;
+		cursor: pointer;
+	}
+	div#ball {
+		border-radius: 32px;
+		box-shadow: -2px 2px 3px #999;
+		background-color: #0094ff;
+	}
+</style>
+
+<div id="demo"><script>
+// Attendre que le DOM soit construit
+$.dom.ready(function () {
+	// Gestionnaire d'événement
+	var animation = function () {
+		// A l'intérieur du gestionnaire, "this" représente la balle
+		var ball = this, $ball = $(this),
+			// Récupérer ses dimensions, ainsi que celles de son conteneur parent
+			size = $.dom.coords(ball), garden = $.dom.coords($ball.parent().get(0));
+		// Cacher la balle puis modifier sa couleur puis la faire réaparaître
+		$ball.hide(250).then(function () {
+			this.css('background-color', '#ff006e').done();
+		}).show(250).then(function () {
+			// Lancer la balle puis continuer...
+			this.doneWhen(
+				// Déplacement horizontal
+				$(ball).animate({ left: (garden.width - size.width) + 'px' }, 3500, 'easeOutQuad'),
+				// Déplacement vertical
+				$(ball).animate({
+					width: "48px",
+					height: "48px",
+					"bottom": (garden.height - size.height) + 'px',
+					"box-shadow": "#ddd -30px 30px 6px 5px"
+				}, 1000, 'easeOutCubic').animate({
+					width: "32px",
+					height: "32px",
+					"bottom": '0px',
+					"box-shadow": "#777 -2px 2px 3px 0px"
+				}, 2500, 'easeOutBounce')
+			);
+		}).then(function() {
+			// Attendre un peu puis redonner à la balle sa couleur initiale !
+			this.delay(500).animate({
+				'background-color': this.previousStyle('background-color')
+			}, 1000).delay(500).done();
+		// Pour finir renvoyer la balle à son point de départ
+		}).animate({ left: '0px' }, 1000, 'easeOutBack').then(function () {
+			this.click(animation, true).done();
+		});
+	};
+	// Assigner une fois le gestionnaire d'événement en réponse en clic dans la balle
+	$('#ball').click(animation, true);
+});
+</script></div>
+
+<p class="avn-align-center"><a href="#" class="code" id="toggle-source">Code source</a></p>
+<pre id="source" style="padding:10px 20px; font-size:.92em; max-height:350px; overflow:auto;"><code class="language-markup"></code></pre>
+<br />
+
+<script>
+var code = $('#demo').html().replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/\t/g, '    ');
+$('#source').css('display', 'none').children().html(code);
+$('#toggle-source').click(function (e) {
+	var source = $('#source');
+	source['none' == source.css('display') ? 'show' : 'hide'](200);
+	e.preventDefault();
+});
+</script>
+<noscript><p class="msg-alert">Autorisez l'exécution de <b>Javascript</b> dans votre navigateur pour profiter de AvineJS&nbsp;!</p></noscript>
+
+		</div><div>
+AvineJS est un framework Javascript élégant, dont la syntaxe simple et robuste, permet d'écrire rapidement du code Javascript puissant et performant.
+		</div>
+	</div>
+</div>
+
+<script>
+	$.dom.ready(function () {
+		$('.avn-carousel').carousel({
+			itemsShift: 50,
+			navigation: false
+		});
+	});
+</script>
+
+		</div>
+	</div>
+
+
+	<!-- headlines -->
+	<div class="avn-area-fill avn-color-grey-dark">
+		<div class="avn-area-bound">
+
+<h4 class="headlines">AvineJS est un framework Javascript élégant, dont la syntaxe simple et robuste, permet d'écrire rapidement du code Javascript puissant et performant.</h4>
+
+		</div>
+	</div><!-- /headlines -->
+
+
+
+	<!-- showcase -->
+	<div class="avn-area-fill avn-color-grey-lighter">
+		<div class="avn-area-bound">
+
+<h2>Showcase</h2>
+<p>Découvrez AvineJS avec 3 plugins étonnamment flexibles et basés sur ce puissant framework.
+
+<div class="avn-grid-wrap avn-grid-spacing avn-grid-border avn-grid-fit avn-grid-radius-full avn-color-grey-dark">
+	<div class="avn-grid avn-grid-medium">
+		<div>
+			<h3 class="goto-page"><a href="plugin/slideshow/demo.html" title="Carrousels animés">Slideshow</a></h3>
+			Génère des Carrousels animés.
+		</div><div>
+			<h3 class="goto-page"><a href="plugin/overlay/demo.html" title="Fenêtres interactives">Overlay</a></h3>
+			Génère des fenêtres interactives.
+		</div><div>
+			<h3 class="goto-page"><a href="plugin/loading/demo.html" title="Retour visuel au chargement de données">Loading</a></h3>
+			Affiche un retour visuel au chargement de données asynchrone.
+		</div>
+	</div>
+</div>
+
+<p>En bonus, appréciez les possibilités du framework AvineJS avec <em>Quest</em>,
+	un jeu basé uniquement sur la manipulation du DOM (sans balise canvas) écrit en HTML, CSS et... Javascript&nbsp;!</p>
+
+<div class="avn-grid-wrap avn-grid-spacing avn-grid-border avn-grid-fit avn-grid-radius-full avn-color-grey-dark">
+	<div class="avn-grid avn-grid-medium">
+		<div>
+			<h3 class="goto-page"><a href="plugin/quest/index.html" title="Avine Quest">Quest</a></h3>
+			Circule en voiture, évite les embûches, et attrape les cadeaux !
+		</div>
+	</div>
+</div>
+
+		</div>
+	</div><!-- /showcase -->
+
+
+
+	<!-- documentation -->
+	<div class="avn-area-fill">
+		<div class="avn-area-bound">
+
+<h2>API / Documentation</h2>
+<p>Maîtrisez les rouages de AvineJS grâce à sa documentation en ligne.
+	Les fonctions principales sont expliquées en détail et accompagnées d'exemples de codes directement exécutés.
+	Et pour aller encore plus loin, n'hésitez-pas à retrousser les manches et consultez le code source particulièrement clair.
+	Pour comprendre la structure du framework, consultez <a href="api/introduction.html">l'introduction</a>.</p>
+
+<div class="avn-grid-wrap avn-grid-spacing avn-grid-border avn-grid-fit avn-grid-radius-full avn-color-secondary">
+	<div class="avn-grid avn-grid-medium">
+		<div>
+			<h3 class="goto-page"><a href="api/tool.html" title="Fonctions utilitaires">$.tool</a></h3>
+			Fonctions utilitaires
+		</div><div>
+			<h3 class="goto-page"><a href="api/dom.html" title="Manipulation du DOM">$.dom</a></h3>
+			Manipulation du DOM
+		</div>
+	</div><div class="avn-grid avn-grid-medium">
+		<div>
+			<h3 class="goto-page"><a href="api/Core.html" title="Syntaxe procédurale pour les traitements asynchrones">$.Core</a></h3>
+			Syntaxe procédurale pour les traitements asynchrones
+		</div><div>
+			<h3 class="goto-page"><a href="api/Require.html" title="Préchargement de ressources">$.Core.Require()</a></h3>
+			Préchargement de ressources
+		</div>
+	</div><div class="avn-grid avn-grid-medium">
+		<div>
+			<h3 class="goto-page"><a href="api/$.html" title="Manipulation du DOM avancée">$()</a> <!--<span class="soon">(*)</span>--></h3>
+			Manipulation du DOM avancée
+		</div>
+	</div>
+</div>
+
+		</div>
+	</div><!-- /documentation -->
+
+
+
+	<!-- support -->
+	<div class="avn-area-fill avn-color-grey-lighter">
+		<div class="avn-area-bound">
+
+<h2>Compatibilité</h2>
+<p>AvineJS est compatible avec les principaux navigateurs du marché (dont Internet Explorer à partir de la version 7) et distribué sous licence Open source.
+	Alors téléchargez-le sans plus attendre pour le tester par vous-même...</p>
+
+<p><img src="resource/browsers/firefox.png" title="Firefox" alt="" />
+	<img src="resource/browsers/chrome.png" title="Chrome" alt="" />
+	<img src="resource/browsers/ie.png" title="Internet Explorer 7+" alt="" />
+	<img src="resource/browsers/safari.png" title="Safari" alt="" />
+	<img src="resource/browsers/opera.png" title="Opera" alt="" /></p>
+
+<p class="download"><a href="http://js.avine.fr/avine-js.js">Télécharger avine-js.js</a></p>
+
+		</div>
+	</div><!-- /support -->
+
+
+
+	<!-- /contact -->
+	<div class="avn-area-fill avn-color-grey-dark">
+		<div class="avn-area-bound">
+
+<h2>Contact</h2>
+<p>Si comme je l'espère vous appréciez AvineJS, n'hésitez-pas à me contacter <img src="images/e.png" />
+	pour me faire part de vos impressions, remarques et questions éventuelles.</p>
+
+		</div>
+	</div><!-- /contact -->
+
+
+
+	<!-- /footer -->
+	<div class="avn-area-fill avn-align-center avn-color-grey-darker">
+		<div class="avn-area-bound">
+
+<div id="footer"><a href="http://avine.fr/">Avine &copy; 2013-2015</a></div>
+
+		</div>
+	</div><!-- /footer -->
+
+</body>
+</html>
